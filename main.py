@@ -1,6 +1,7 @@
-import pygame
 import random
 import sys
+
+import pygame
 
 # -----------------------------
 # Konfigurasi dasar
@@ -17,6 +18,7 @@ DARK_GREEN = (30, 160, 95)
 RED = (235, 80, 80)
 GRID = (30, 30, 30)
 
+
 # -----------------------------
 # Utilitas
 # -----------------------------
@@ -27,6 +29,7 @@ def draw_grid(surface):
     for y in range(0, HEIGHT, BLOCK):
         pygame.draw.line(surface, GRID, (0, y), (WIDTH, y), 1)
 
+
 def spawn_food(snake):
     # Spawn makanan yang tidak menimpa ular
     while True:
@@ -35,11 +38,13 @@ def spawn_food(snake):
         if (fx, fy) not in snake:
             return (fx, fy)
 
+
 def render_text(surface, text, size, color, center):
     font = pygame.font.SysFont("consolas", size, bold=True)
     s = font.render(text, True, color)
     rect = s.get_rect(center=center)
     surface.blit(s, rect)
+
 
 # -----------------------------
 # Game utama
@@ -59,7 +64,7 @@ def main():
         (start_x - 2 * BLOCK, start_y),
     ]
     dir_x, dir_y = (1, 0)  # bergerak ke kanan
-    pending_dir = (1, 0)   # arah yang diminta dari input
+    pending_dir = (1, 0)  # arah yang diminta dari input
 
     # Makanan dan skor
     food = spawn_food(snake)
@@ -163,6 +168,7 @@ def main():
 
     pygame.quit()
     sys.exit()
+
 
 if __name__ == "__main__":
     main()
